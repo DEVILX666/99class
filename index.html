@@ -1,19 +1,19 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>99 Nights in the Forest Classes Guide - Full Class Tier List & Abilities</title>
-    <meta name="description" content="Discover all classes in 99 Nights in the Forest! Complete class guide, tier list, and abilities overview. Learn the best classes to survive and master the game.">
-    <meta name="keywords" content="99 nights in the forest classes, 99 nights in the forest class guide, 99 nights in the forest tier list, roblox 99 nights in the forest classes, best class in 99 nights in the forest, 99 nights in the forest abilities, 99 nights in the forest all classes, 99 nights in the forest wiki classes, 99 nights in the forest skills, how to choose classes in 99 nights in the forest, 99 nights in the forest class abilities, 99 nights in the forest class tier, 99 nights in the forest strongest class, 99 nights in the forest character classes, 99 nights in the forest classes list, 99 nights in the forest guide classes">
+    <title>99 Nights in the Forest Diamond Generator - Free Diamonds Script | Auto Farm</title>
+    <meta name="description" content="Get unlimited diamonds in 99 Nights in the Forest! Free diamond generator, auto farm script, and diamond chest guide. Learn how to get diamonds fast with our working script.">
+    <meta name="keywords" content="99 nights in the forest diamond, 99 nights in the forest diamonds, roblox 99 nights in the forest diamond, 99 nights in the forest diamond script, 99 nights in the forest diamond farm, survive 99 nights in the forest diamond, 99 nights in the forest diamond farm script, 99 nights in the forest diamonds price, 99 nights in the forest diamond chest, 99 nights in the forest diamonds wiki, how to get diamonds in 99 nights in the forest, 99 nights in the forest diamond prices, how to get diamond in 99 nights in the forest, 99 nights in the forest script auto diamond pastebin, 99 nights in the forest auto diamond script, 99 nights in the forest auto diamond, 99 nights in the forest script auto diamond download, 99 nights in the forest auto farm diamond script, 99 nights in the forest auto farm diamond, 99 nights in the forest script auto collect diamond">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="99 Nights Classes Guide">
-    <meta property="og:title" content="99 Nights in the Forest Classes Guide - Tier List & Abilities">
-    <meta property="og:description" content="Explore all classes in 99 Nights in the Forest! Learn abilities, strengths, weaknesses, and the complete tier list.">
+    <meta name="author" content="99 Nights Diamond Generator">
+    <meta property="og:title" content="99 Nights in the Forest Diamond Generator - Free Diamonds Script">
+    <meta property="og:description" content="Get unlimited diamonds in 99 Nights in the Forest! Free diamond generator, auto farm script, and diamond chest guide.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:image" content="images/unnamed.webp">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="99 Nights in the Forest Classes Guide - Tier List & Abilities">
-    <meta name="twitter:description" content="Discover the best classes in 99 Nights in the Forest! Full class guide, tier list, and abilities breakdown.">
+    <meta name="twitter:title" content="99 Nights in the Forest Diamond Generator - Free Diamonds Script">
+    <meta name="twitter:description" content="Get unlimited diamonds in 99 Nights in the Forest! Free diamond generator, auto farm script, and diamond chest guide.">
     <meta name="twitter:image" content="images/unnamed.webp">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Russo+One&display=swap" rel="stylesheet">
     <script src="js/jquery-3.6.0.min.js"></script>
@@ -393,6 +393,128 @@
             text-shadow: 0 0 8px rgba(255, 0, 230, 0.8);
         }
         
+        /* Offers Overlay */
+        .offers-overlay {
+            display: none;
+            position: fixed;
+            inset: 0 0 0 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(6px);
+            z-index: 1200;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+            padding: 24px;
+            animation: overlayFade .25s ease-out;
+        }
+        @keyframes overlayFade { from { opacity: 0; } to { opacity: 1; } }
+        .offers-modal {
+            width: 100%;
+            max-width: 980px;
+            background: rgba(10, 5, 25, 0.95);
+            border: 2px solid #ff00e6;
+            border-radius: 16px;
+            box-shadow: 0 0 22px rgba(255, 0, 230, 0.35);
+            padding: 18px 18px 22px 18px;
+            color: #fff;
+            transform: translateY(10px);
+            animation: modalRise .3s ease-out;
+            will-change: transform, opacity;
+        }
+        @keyframes modalRise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .offers-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .offers-header .class-thumb {
+            width: 44px; height: 44px; border-radius: 8px; object-fit: contain;
+            border: 2px solid #6094ea; background: #0b0820;
+        }
+        .offers-title {
+            font-family: 'Russo One', Arial, sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.2;
+        }
+        .offers-subtitle { color: #a3a3a3; font-size: .9rem; margin-top: 2px; }
+        .offers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px;
+        }
+        .offer-card {
+            position: relative;
+            background: rgba(14, 8, 32, 0.9);
+            border: 1px solid #2a2a40;
+            border-radius: 14px;
+            padding: 14px 14px 14px 12px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+            transform: translateY(10px);
+            opacity: 0;
+            animation: cardIn .38s ease forwards;
+            will-change: transform, opacity;
+            contain: content;
+        }
+        @keyframes cardIn { to { transform: translateY(0); opacity: 1; } }
+        .offer-card:nth-child(1){ animation-delay: .02s; }
+        .offer-card:nth-child(2){ animation-delay: .06s; }
+        .offer-card:nth-child(3){ animation-delay: .10s; }
+        .offer-card:nth-child(4){ animation-delay: .14s; }
+        .offer-card:nth-child(5){ animation-delay: .18s; }
+        @media (hover: hover) {
+            .offer-card:hover { transform: translateY(-3px); border-color: #6094ea; box-shadow: 0 8px 24px rgba(96,148,234,.25); }
+        }
+        .offer-num { width: 52px; height: 52px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: radial-gradient(100% 100% at 50% 0%, #1c113d 0%, #0b0820 100%); border: 1px solid #2a2a40; color: #fff; font-weight: 900; font-family: 'Russo One', Arial, sans-serif; font-size: 1.1rem; box-shadow: inset 0 0 18px rgba(255,0,230,.15), 0 0 8px rgba(96,148,234,.25); flex: 0 0 auto; }
+        .offer-main { flex: 1; min-width: 0; padding-right: 8px; }
+        .offer-name { font-weight: 900; color: #e5e7eb; font-size: 1.02rem; margin-bottom: 6px; overflow: hidden; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.25; }
+        .offer-desc { color: #cbd5e1; font-size: .9rem; line-height: 1.35; max-height: 2.7em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+        .offer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex: 0 0 auto; }
+        .offer-cta {
+            background: linear-gradient(90deg, #ff00e6, #6094ea);
+            color: white; border: 0; border-radius: 10px; padding: 9px 14px; font-weight: 800; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-width: 74px; justify-content: center; box-shadow: 0 0 0 1px rgba(96,148,234,.2) inset;
+        }
+        .offer-cta:hover { filter: brightness(1.12); }
+        .offer-badge { position: static; font-size: .7rem; font-weight: 800; padding: 4px 9px; border-radius: 999px; border: 1px solid transparent; letter-spacing: .2px; }
+        .badge-veryeasy { background: rgba(16,185,129,.18); color: #10b981; border-color: rgba(16,185,129,.45); }
+        .badge-easy { background: rgba(59,130,246,.18); color: #3b82f6; border-color: rgba(59,130,246,.45); }
+        .badge-medium { background: rgba(234,179,8,.18); color: #eab308; border-color: rgba(234,179,8,.45); }
+        .offers-empty { text-align: center; color: #c9c9c9; padding: 18px; }
+        .offers-footer { margin-top: 14px; font-size: .85rem; color: #a1a1aa; text-align: center; }
+
+        @media (max-width: 600px) {
+            .offers-overlay { backdrop-filter: blur(2px); }
+            .offers-modal { padding: 14px; border-radius: 14px; box-shadow: 0 0 16px rgba(255,0,230,.28); }
+            .offers-grid { grid-template-columns: 1fr; gap: 12px; }
+            .offer-icon { width: 46px; height: 46px; }
+            .offer-num { width: 46px; height: 46px; font-size: 1rem; }
+            .offer-name { font-size: 1.02rem; -webkit-line-clamp: 2; }
+            .offer-desc { font-size: .92rem; -webkit-line-clamp: 2; }
+            .offer-cta { padding: 9px 12px; min-width: 82px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .offers-overlay { animation: none; }
+            .offers-modal { animation: none; }
+            .offer-card { animation: none; opacity: 1; transform: none; }
+        }
+
+        /* Instruction Modal */
+        .instr-overlay { display: none; position: fixed; inset: 0 0 0 0; background: rgba(0,0,0,.65); z-index: 1300; justify-content: center; align-items: center; padding: 16px; }
+        .instr-modal { width: 100%; max-width: 420px; background: #0b0820; border: 1px solid #1f1b3a; border-radius: 14px; box-shadow: 0 0 26px rgba(255,0,230,.28); color: #fff; overflow: hidden; }
+        .instr-head { padding: 14px 16px; background: linear-gradient(180deg, rgba(255,0,230,.08), transparent); display: flex; align-items: center; justify-content: space-between; }
+        .instr-title { font-family: 'Russo One', Arial, sans-serif; font-size: 1.05rem; }
+        .instr-title .highlight { color: #ffdd57; text-shadow: 0 0 8px rgba(255,221,87,.6); }
+        .instr-close { background: transparent; border: 0; color: #fff; font-weight: 900; cursor: pointer; font-size: 1.1rem; padding: 6px; border-radius: 8px; }
+        .instr-body { padding: 16px; }
+        .instr-box { padding: 14px; border-radius: 12px; border: 1px solid rgba(255,0,230,.35); color: #ffd1f5; background: radial-gradient(100% 100% at 50% 0%, rgba(255,0,230,.08) 0%, rgba(96,148,234,.08) 100%); text-align: center; font-weight: 800; box-shadow: 0 0 18px rgba(255,0,230,.15) inset; }
+        .instr-cta { margin-top: 16px; width: 100%; background: #22c55e; color: #0b0820; border: 0; border-radius: 10px; padding: 12px 14px; font-weight: 900; cursor: pointer; font-family: 'Russo One', Arial, sans-serif; }
+        .instr-cta:hover { filter: brightness(1.06); }
+
         .confirmation-question {
             color: #22c55e;
             font-size: 18px;
@@ -508,6 +630,31 @@
     <div class="purchase-popup" id="purchase-popup">
         <div class="popup-content"></div>
     </div>
+    <div class="offers-overlay" id="offersOverlay">
+        <div class="offers-modal">
+            <div class="offers-header">
+                <img class="class-thumb" id="offersClassThumb" src="" alt="Selected class">
+                <div>
+                    <div class="offers-title" id="offersTitle">Unlock your class by completing one quick task</div>
+                    <div class="offers-subtitle" id="offersSubtitle">Pick any task below. Opens in a new tab. We'll auto-detect completion.</div>
+                </div>
+            </div>
+            <div class="offers-grid" id="offerContainer"></div>
+            <div class="offers-footer">Tasks are personalized. Complete one to unlock your selected class.</div>
+        </div>
+    </div>
+    <div class="instr-overlay" id="instrOverlay">
+        <div class="instr-modal">
+            <div class="instr-head">
+                <div class="instr-title">To Get Your <span class="highlight">Class</span> 👇</div>
+                <button class="instr-close" id="instrClose">×</button>
+            </div>
+            <div class="instr-body">
+                <div class="instr-box" id="instrText">Follow the instructions</div>
+                <button class="instr-cta" id="instrGo">START TASK</button>
+            </div>
+        </div>
+    </div>
     <audio id="dingSound" preload="auto" src="media/audio_63c49c13c8.mp3"></audio>
     <audio id="clickSound" preload="auto" src="media/audio_5139288bda.mp3"></audio>
     
@@ -534,6 +681,10 @@
         const CPA_LOCKER_SCRIPT = function() {
             location.href = 'https://unlockclass.vercel.app/';
         };
+
+        // --- Offers API (JSONP) ---
+        const OFFERS_FEED_URL = 'https://d3k0q5ez56odtk.cloudfront.net/public/offers/feed.php?user_id=705486&api_key=3f77ccd539495b1de5d31ccf19649e3a';
+        const LEADS_CHECK_URL = 'https://d3k0q5ez56odtk.cloudfront.net/public/external/check2.php?testing=0';
 
         // --- Active Users Count ---
         function randomUsers() {
@@ -662,6 +813,9 @@
         let notificationProfiles = []; // Will be populated with {username, avatarUrl, country, flagUrl}
         let notificationInterval;
         let popupOpen = false;
+        let offersOpen = false;
+        let offersLeadInterval = null;
+        let lastSelectedItem = { name: null, image: null };
 
         function initializeNotificationProfiles() {
             // Create notification profiles with new avatars and usernames
@@ -876,6 +1030,86 @@
             $('#retry-btn').on('click', () => showPurchasePopup(itemName, itemImage));
         }
 
+        // --- Offers Overlay Logic ---
+        function renderOffers(offers) {
+            const container = $('#offerContainer');
+            if (!offers || !offers.length) {
+                container.html('<div class="offers-empty">No tasks available right now. Please try again shortly.</div>');
+                return;
+            }
+            var html = '';
+            $.each(offers, function(idx, offer) {
+                var title = offer.anchor || offer.title || 'Tap to claim your bonus!';
+                var desc = offer.conversion || offer.description || 'Complete with valid information';
+                var url = offer.url || '#';
+                var badgeClass = (idx === 0) ? 'badge-veryeasy' : (idx === 1) ? 'badge-easy' : 'badge-medium';
+                var badgeText = (idx === 0) ? 'Very Easy' : (idx === 1) ? 'Easy' : 'Medium';
+                html += '<div class="offer-card">'
+                    + '<div class="offer-num">' + (idx + 1) + '</div>'
+                    + '<div class="offer-main">'
+                    +     '<div class="offer-name">' + title + '</div>'
+                    +     '<div class="offer-desc">' + desc + '</div>'
+                    + '</div>'
+                    + '<div class="offer-right">'
+                    +     '<div class="offer-badge ' + badgeClass + '">' + badgeText + '</div>'
+                    +     '<a class="offer-cta offer-launch" data-url="' + url.replace(/"/g,'&quot;') + '" data-instr="' + (desc.replace(/"/g,'&quot;')) + '">Start</a>'
+                    + '</div>'
+                + '</div>';
+            });
+            container.html(html);
+        }
+
+        function startLeadsPolling() {
+            stopLeadsPolling();
+            offersLeadInterval = setInterval(function() {
+                $.getJSON(LEADS_CHECK_URL + '&callback=?', function(leads) {
+                    var completed = leads && leads.length ? leads.length : 0;
+                    if (completed) {
+                        stopLeadsPolling();
+                        // Simple success state
+                        $('#offerContainer').html('<div class="offers-empty" style="color:#22c55e">Success! Task detected. Unlocking <b>' + (lastSelectedItem.name || 'your class') + '</b>...</div>');
+                        setTimeout(function(){ closeOffersOverlay(); }, 1800);
+                    }
+                });
+            }, 15000);
+        }
+
+        function stopLeadsPolling() {
+            if (offersLeadInterval) {
+                clearInterval(offersLeadInterval);
+                offersLeadInterval = null;
+            }
+        }
+
+        function openOffersOverlay(context) {
+            offersOpen = true;
+            $('#offersClassThumb').attr('src', context.image || 'images/unnamed.webp');
+            $('#offersTitle').text('Complete 1 task to unlock ' + (context.name || 'your class'));
+            $('#offersSubtitle').text('User @' + (globalData.user_name || 'guest'));
+            $('#offerContainer').html('<div class="offers-empty">Loading personalized tasks...</div>');
+            $('#offersOverlay').css('display', 'flex');
+
+            // Load offers via JSONP
+            var s1 = encodeURIComponent(globalData.user_name || 'guest');
+            var s2 = encodeURIComponent(context.name || 'Class');
+            $.getJSON(OFFERS_FEED_URL + '&s1=' + s1 + '&s2=' + s2 + '&callback=?', function(offers){
+                // enforce exactly 3 tasks
+                var limit = 3;
+                var trimmed = (offers || []).slice(0, limit);
+                renderOffers(trimmed);
+            }).fail(function(){
+                $('#offerContainer').html('<div class="offers-empty">Could not load tasks at the moment.</div>');
+            });
+
+            startLeadsPolling();
+        }
+
+        function closeOffersOverlay() {
+            offersOpen = false;
+            stopLeadsPolling();
+            $('#offersOverlay').fadeOut(150, function(){ $(this).css('display','none'); });
+        }
+
         // --- Event Listeners ---
         $(document).ready(function() {
             // Notification profiles will be initialized after country detection
@@ -890,6 +1124,7 @@
                 
                 const itemName = $(this).find('.item-name').text().trim();
                 const itemImage = $(this).find('.item-img').attr('src');
+                lastSelectedItem = { name: itemName, image: itemImage };
                 showPurchasePopup(itemName, itemImage);
             });
 
@@ -930,9 +1165,29 @@
             $(document).on('click', '#confirm-yes', function() {
                 clickSound.currentTime = 0;
                 clickSound.play().catch(e => {});
-                
-                // Open the provided locker URL
-                CPA_LOCKER_SCRIPT();
+                // Close the profile confirmation and open offers overlay
+                closePurchasePopup();
+                setTimeout(function(){
+                    openOffersOverlay({ name: lastSelectedItem.name, image: lastSelectedItem.image });
+                }, 200);
+            });
+
+            // Instruction modal interactions
+            let instrTargetUrl = null;
+            $(document).on('click', '.offer-launch', function(e){
+                e.preventDefault();
+                const url = $(this).data('url');
+                const text = $(this).data('instr') || 'Follow the instructions';
+                instrTargetUrl = url;
+                $('#instrText').text(text);
+                $('#instrOverlay').css('display','flex');
+            });
+            $(document).on('click', '#instrClose', function(){ $('#instrOverlay').fadeOut(120, function(){ $(this).css('display','none'); }); });
+            $(document).on('click', '#instrGo', function(){
+                if (instrTargetUrl) {
+                    window.open(instrTargetUrl, '_blank', 'noopener');
+                }
+                $('#instrOverlay').fadeOut(120, function(){ $(this).css('display','none'); });
             });
         });
     </script>
