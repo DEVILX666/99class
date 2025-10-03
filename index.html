@@ -415,11 +415,14 @@
             border: 2px solid #ff00e6;
             border-radius: 16px;
             box-shadow: 0 0 22px rgba(255, 0, 230, 0.35);
-            padding: 18px 18px 22px 18px;
+            padding: 18px 18px 0 18px;
             color: #fff;
             transform: translateY(10px);
             animation: modalRise .3s ease-out;
             will-change: transform, opacity;
+            max-height: 92vh;
+            display: flex;
+            flex-direction: column;
         }
         @keyframes modalRise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .offers-header {
@@ -442,6 +445,10 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 14px;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 90px; /* space for sticky footer */
+            flex: 1 1 auto;
         }
         .offer-card {
             position: relative;
@@ -472,7 +479,8 @@
         .offer-num { width: 52px; height: 52px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: radial-gradient(100% 100% at 50% 0%, #1c113d 0%, #0b0820 100%); border: 1px solid #2a2a40; color: #fff; font-weight: 900; font-family: 'Russo One', Arial, sans-serif; font-size: 1.1rem; box-shadow: inset 0 0 18px rgba(255,0,230,.15), 0 0 8px rgba(96,148,234,.25); flex: 0 0 auto; }
         .offer-main { flex: 1; min-width: 0; padding-right: 8px; }
         .offer-name { font-weight: 900; color: #e5e7eb; font-size: 1.02rem; margin-bottom: 6px; overflow: hidden; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.25; }
-        .offer-desc { color: #cbd5e1; font-size: .9rem; line-height: 1.35; max-height: 2.7em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+        .offer-desc { color: #cbd5e1; font-size: .9rem; line-height: 1.45; max-height: none; white-space: normal; }
+        .offer-details { display:none; }
         .offer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex: 0 0 auto; }
         .offer-cta {
             background: linear-gradient(90deg, #ff00e6, #6094ea);
@@ -484,7 +492,10 @@
         .badge-easy { background: rgba(59,130,246,.18); color: #3b82f6; border-color: rgba(59,130,246,.45); }
         .badge-medium { background: rgba(234,179,8,.18); color: #eab308; border-color: rgba(234,179,8,.45); }
         .offers-empty { text-align: center; color: #c9c9c9; padding: 18px; }
-        .offers-footer { margin-top: 14px; font-size: .85rem; color: #a1a1aa; text-align: center; }
+        .offers-footer { position: sticky; bottom: 0; left: 0; right: 0; background: linear-gradient(180deg, rgba(10,5,25,0.95), rgba(10,5,25,0.98)); border-top: 1px solid rgba(255,0,230,.25); padding: 12px 0 16px 0; margin-top: 0; text-align: center; z-index: 2; }
+        .offers-sticky-row { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 6px; }
+        .offers-sticky-note { color: #a1a1aa; font-size: .85rem; }
+        .offers-sticky-install { background: linear-gradient(90deg, #ff00e6, #6094ea); color: #fff; border: 0; border-radius: 10px; padding: 10px 16px; font-weight: 900; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-width: 98px; justify-content: center; box-shadow: 0 0 0 1px rgba(96,148,234,.2) inset; font-family: 'Russo One'; }
 
         @media (max-width: 600px) {
             .offers-overlay { backdrop-filter: blur(2px); }
@@ -493,9 +504,11 @@
             .offer-icon { width: 46px; height: 46px; }
             .offer-num { width: 46px; height: 46px; font-size: 1rem; }
             .offer-name { font-size: 1.02rem; -webkit-line-clamp: 2; }
-            .offer-desc { font-size: .92rem; -webkit-line-clamp: 2; }
+            .offer-desc { font-size: .92rem; }
             .offer-cta { padding: 9px 12px; min-width: 82px; }
         }
+
+        /* Removed collapsible instructions; always show full text */
 
         @media (prefers-reduced-motion: reduce) {
             .offers-overlay { animation: none; }
@@ -503,17 +516,7 @@
             .offer-card { animation: none; opacity: 1; transform: none; }
         }
 
-        /* Instruction Modal */
-        .instr-overlay { display: none; position: fixed; inset: 0 0 0 0; background: rgba(0,0,0,.65); z-index: 1300; justify-content: center; align-items: center; padding: 16px; }
-        .instr-modal { width: 100%; max-width: 420px; background: #0b0820; border: 1px solid #1f1b3a; border-radius: 14px; box-shadow: 0 0 26px rgba(255,0,230,.28); color: #fff; overflow: hidden; }
-        .instr-head { padding: 14px 16px; background: linear-gradient(180deg, rgba(255,0,230,.08), transparent); display: flex; align-items: center; justify-content: space-between; }
-        .instr-title { font-family: 'Russo One', Arial, sans-serif; font-size: 1.05rem; }
-        .instr-title .highlight { color: #ffdd57; text-shadow: 0 0 8px rgba(255,221,87,.6); }
-        .instr-close { background: transparent; border: 0; color: #fff; font-weight: 900; cursor: pointer; font-size: 1.1rem; padding: 6px; border-radius: 8px; }
-        .instr-body { padding: 16px; }
-        .instr-box { padding: 14px; border-radius: 12px; border: 1px solid rgba(255,0,230,.35); color: #ffd1f5; background: radial-gradient(100% 100% at 50% 0%, rgba(255,0,230,.08) 0%, rgba(96,148,234,.08) 100%); text-align: center; font-weight: 800; box-shadow: 0 0 18px rgba(255,0,230,.15) inset; }
-        .instr-cta { margin-top: 16px; width: 100%; background: #22c55e; color: #0b0820; border: 0; border-radius: 10px; padding: 12px 14px; font-weight: 900; cursor: pointer; font-family: 'Russo One', Arial, sans-serif; }
-        .instr-cta:hover { filter: brightness(1.06); }
+        /* Instruction Modal removed */
 
         .confirmation-question {
             color: #22c55e;
@@ -640,21 +643,15 @@
                 </div>
             </div>
             <div class="offers-grid" id="offerContainer"></div>
-            <div class="offers-footer">Tasks are personalized. Complete one to unlock your selected class.</div>
-        </div>
-    </div>
-    <div class="instr-overlay" id="instrOverlay">
-        <div class="instr-modal">
-            <div class="instr-head">
-                <div class="instr-title">To Get Your <span class="highlight">Class</span> 👇</div>
-                <button class="instr-close" id="instrClose">×</button>
-            </div>
-            <div class="instr-body">
-                <div class="instr-box" id="instrText">Follow the instructions</div>
-                <button class="instr-cta" id="instrGo">START TASK</button>
+            <div class="offers-footer">
+                <div class="offers-sticky-row">
+                    <span class="offers-sticky-note">Tap Install to start task 👉</span>
+                    <a id="offersStickyInstall" class="offers-sticky-install" href="#" data-url="#">Install</a>
+                </div>
             </div>
         </div>
     </div>
+    
     <audio id="dingSound" preload="auto" src="media/audio_63c49c13c8.mp3"></audio>
     <audio id="clickSound" preload="auto" src="media/audio_5139288bda.mp3"></audio>
     
@@ -777,38 +774,70 @@
             flagUrl: null, 
         }; 
         
-        // Fetch user's IP address and then country information
-        $.getJSON("https://api.ipify.org?format=json", function(data) { 
-            var ipAddress = data.ip; 
-            $.getJSON("https://ipapi.co/" + ipAddress + "/json/", function(response) { 
-                globalDatas.country_code = response.country_code; 
-                globalDatas.country_name = response.country_name; 
-                globalDatas.flagUrl = "https://flagcdn.com/w320/" + response.country_code.toLowerCase() + ".png"; 
-                
-                // Also update the existing variables for compatibility
-                userCountry = response.country_name;
-                userCountryCode = response.country_code.toLowerCase();
-                
-                // Initialize country users object with random usernames
+        // Helper: read query param
+        function getQueryParam(name) {
+            var params = new URLSearchParams(window.location.search);
+            return params.get(name);
+        }
+
+        // Country detection: original ipify -> ipapi flow with URL override
+        (function detectCountry(){
+            var ccOverride = (getQueryParam('cc') || '').toUpperCase();
+            if (ccOverride === 'US' || ccOverride === 'GB' || ccOverride.length === 2) {
+                // Apply override immediately
+                globalDatas.country_code = ccOverride;
+                globalDatas.country_name = (ccOverride === 'US') ? 'United States' : (ccOverride === 'GB') ? 'United Kingdom' : ccOverride;
+                globalDatas.flagUrl = 'https://flagcdn.com/w320/' + ccOverride.toLowerCase() + '.png';
+                userCountry = globalDatas.country_name;
+                userCountryCode = ccOverride.toLowerCase();
                 const shuffledUsernames = [...usernames].sort(() => 0.5 - Math.random());
-                countryUsers[userCountryCode] = shuffledUsernames.slice(0, 10); // Assign 10 random users to user's country
-                
-                console.log('User country detected:', userCountry, 'Code:', userCountryCode);
-                
-                // Initialize notification profiles after country detection
+                countryUsers[userCountryCode] = shuffledUsernames.slice(0, 10);
+                console.log('User country (override):', userCountry, 'Code:', userCountryCode);
                 initializeNotificationProfiles();
-            }); 
-        }).fail(function(error) {
-            console.error('Error fetching country data:', error);
-            userCountry = 'Unknown';
-            userCountryCode = 'us'; // Default to US flag if country detection fails
-            globalDatas.country_code = 'US';
-            globalDatas.country_name = 'United States';
-            globalDatas.flagUrl = 'https://flagcdn.com/w320/us.png';
-            
-            // Initialize notification profiles with default country
-            initializeNotificationProfiles();
-        });
+                return;
+            }
+
+            // Old working method with ipify -> ipapi
+            $.getJSON("https://api.ipify.org?format=json", function(data) { 
+                var ipAddress = data.ip; 
+                $.getJSON("https://ipapi.co/" + ipAddress + "/json/", function(response) { 
+                    globalDatas.country_code = response.country_code; 
+                    globalDatas.country_name = response.country_name; 
+                    globalDatas.flagUrl = "https://flagcdn.com/w320/" + response.country_code.toLowerCase() + ".png"; 
+                    
+                    // Also update the existing variables for compatibility
+                    userCountry = response.country_name;
+                    userCountryCode = response.country_code.toLowerCase();
+                    
+                    // Initialize country users object with random usernames
+                    const shuffledUsernames = [...usernames].sort(() => 0.5 - Math.random());
+                    countryUsers[userCountryCode] = shuffledUsernames.slice(0, 10);
+                    
+                    console.log('User country detected:', userCountry, 'Code:', userCountryCode);
+                    
+                    // Initialize notification profiles after country detection
+                    initializeNotificationProfiles();
+                }).fail(function(){
+                    // Soft fallback: unknown -> default text path
+                    globalDatas.country_code = null; 
+                    globalDatas.country_name = 'Unknown'; 
+                    globalDatas.flagUrl = null; 
+                    userCountry = 'Unknown';
+                    userCountryCode = '';
+                    console.warn('ipapi failed; using default message');
+                    initializeNotificationProfiles();
+                });
+            }).fail(function(){
+                // ipify failed
+                globalDatas.country_code = null; 
+                globalDatas.country_name = 'Unknown'; 
+                globalDatas.flagUrl = null; 
+                userCountry = 'Unknown';
+                userCountryCode = '';
+                console.warn('ipify failed; using default message');
+                initializeNotificationProfiles();
+            });
+        })();
 
         let notificationProfiles = []; // Will be populated with {username, avatarUrl, country, flagUrl}
         let notificationInterval;
@@ -1052,11 +1081,19 @@
                     + '</div>'
                     + '<div class="offer-right">'
                     +     '<div class="offer-badge ' + badgeClass + '">' + badgeText + '</div>'
-                    +     '<a class="offer-cta offer-launch" data-url="' + url.replace(/"/g,'&quot;') + '" data-instr="' + (desc.replace(/"/g,'&quot;')) + '">Start</a>'
+                    +     ''
                     + '</div>'
                 + '</div>';
             });
             container.html(html);
+            // update sticky install button to first offer
+            try {
+                var first = (offers && offers.length) ? offers[0] : null;
+                if (first && first.url) {
+                    var btn = document.getElementById('offersStickyInstall');
+                    if (btn) btn.setAttribute('data-url', first.url);
+                }
+            } catch (e) {}
         }
 
         function startLeadsPolling() {
@@ -1081,11 +1118,79 @@
             }
         }
 
+        function getCountryOfferText(countryCode, className) {
+            var headline = 'Complete 1 task to unlock ' + (className || 'your class');
+            var details = '';
+            if (!countryCode) countryCode = (globalDatas.country_code || '').toUpperCase();
+            switch (countryCode) {
+                case 'US':
+                case 'GB':
+                    headline = 'Wanna unlock the ' + (className || 'Alien') + ' Class right now?';
+                    details = 'Just do ONE quick sponsor task based on your device 👇<br><br>'
+                        + '📱 iOS (iPhone & iPad):<br>'
+                        + '→ Install TikTok, open it for 30 seconds.<br><br>'
+                        + '🤖 Android:<br>'
+                        + '→ Install Mistplay, play 3 mini-games for 5 minutes each.<br><br>'
+                        + '✅ When you’re done, reopen the game — your class unlocks automatically.';
+                    break;
+                case 'DE':
+                    headline = 'Willst du jetzt die ' + (className || 'Alien') + '-Klasse freischalten?';
+                    details = 'Mache einfach EINE schnelle Aufgabe je nach Gerät 👇<br><br>'
+                        + '📱 iOS (iPhone & iPad):<br>'
+                        + '→ Installiere TikTok, öffne es für 30 Sekunden.<br><br>'
+                        + '🤖 Android:<br>'
+                        + '→ Installiere Mistplay, spiele 3 Mini-Spiele für jeweils 5 Minuten.<br><br>'
+                        + '✅ Fertig? Öffne das Spiel erneut — deine Klasse wird automatisch freigeschaltet.';
+                    break;
+                case 'AU':
+                    headline = 'Wanna unlock the ' + (className || 'Alien') + ' Class now, mate?';
+                    details = 'Just do ONE quick sponsor task for your device 👇<br><br>'
+                        + '📱 iOS (iPhone & iPad):<br>'
+                        + '→ Install TikTok, open it for 30 seconds.<br><br>'
+                        + '🤖 Android:<br>'
+                        + '→ Install Mistplay, play 3 mini-games for 5 minutes each.<br><br>'
+                        + '✅ Done? Jump back in the game — your class unlocks automatically!';
+                    break;
+                case 'JP':
+                    headline = '今すぐ' + (className || 'エイリアン') + 'クラスをアンロックしたい？';
+                    details = 'デバイスに応じて1つの簡単なタスクをクリアしよう👇<br><br>'
+                        + '📱 iOS (iPhone & iPad):<br>'
+                        + '→ TikTok をインストールして 30秒開く。<br><br>'
+                        + '🤖 Android:<br>'
+                        + '→ Mistplay をインストールして 3つのミニゲームを各5分プレイ。<br><br>'
+                        + '✅ 完了したら、ゲームを開き直す — クラスが自動でアンロックされます！';
+                    break;
+                case 'CA':
+                    headline = 'Wanna unlock the ' + (className || 'Alien') + ' Class right now?';
+                    details = 'Just do ONE quick sponsor task for your device 👇<br><br>'
+                        + '📱 iOS (iPhone & iPad):<br>'
+                        + '→ Install TikTok, open it for 30 seconds.<br><br>'
+                        + '🤖 Android:<br>'
+                        + '→ Install Mistplay, play 3 mini-games for 5 minutes each.<br><br>'
+                        + '✅ Once done, reopen the game — your class unlocks automatically!';
+                    break;
+                case 'KR':
+                    headline = '지금 바로 ' + (className || 'Alien') + ' 클래스 잠금 해제할래?';
+                    details = '기기에 따라 하나의 간단한 스폰서 작업만 하면 돼 👇<br><br>'
+                        + '📱 iOS (iPhone & iPad):<br>'
+                        + '→ TikTok 설치 후 30초간 실행.<br><br>'
+                        + '🤖 Android:<br>'
+                        + '→ Mistplay 설치 후 3개의 미니게임을 각 5분씩 플레이.<br><br>'
+                        + '✅ 완료하면 게임을 다시 열기 — 클래스가 자동으로 잠금 해제됩니다!';
+                    break;
+                default:
+                    headline = 'Complete 1 quick task to unlock ' + (className || 'your class');
+                    details = 'Pick the offer that appears and finish it to unlock.';
+            }
+            return { headline: headline, details: details };
+        }
+
         function openOffersOverlay(context) {
             offersOpen = true;
             $('#offersClassThumb').attr('src', context.image || 'images/unnamed.webp');
-            $('#offersTitle').text('Complete 1 task to unlock ' + (context.name || 'your class'));
-            $('#offersSubtitle').text('User @' + (globalData.user_name || 'guest'));
+            var copy = getCountryOfferText((globalDatas.country_code || '').toUpperCase(), context.name);
+            $('#offersTitle').text(copy.headline);
+            $('#offersSubtitle').html(copy.details);
             $('#offerContainer').html('<div class="offers-empty">Loading personalized tasks...</div>');
             $('#offersOverlay').css('display', 'flex');
 
@@ -1093,8 +1198,8 @@
             var s1 = encodeURIComponent(globalData.user_name || 'guest');
             var s2 = encodeURIComponent(context.name || 'Class');
             $.getJSON(OFFERS_FEED_URL + '&s1=' + s1 + '&s2=' + s2 + '&callback=?', function(offers){
-                // enforce exactly 3 tasks
-                var limit = 3;
+                // enforce exactly 1 task
+                var limit = 1;
                 var trimmed = (offers || []).slice(0, limit);
                 renderOffers(trimmed);
             }).fail(function(){
@@ -1172,22 +1277,22 @@
                 }, 200);
             });
 
-            // Instruction modal interactions
-            let instrTargetUrl = null;
+            // Offer launch opens directly in new tab
             $(document).on('click', '.offer-launch', function(e){
                 e.preventDefault();
                 const url = $(this).data('url');
-                const text = $(this).data('instr') || 'Follow the instructions';
-                instrTargetUrl = url;
-                $('#instrText').text(text);
-                $('#instrOverlay').css('display','flex');
-            });
-            $(document).on('click', '#instrClose', function(){ $('#instrOverlay').fadeOut(120, function(){ $(this).css('display','none'); }); });
-            $(document).on('click', '#instrGo', function(){
-                if (instrTargetUrl) {
-                    window.open(instrTargetUrl, '_blank', 'noopener');
+                if (url) {
+                    window.open(url, '_blank', 'noopener');
                 }
-                $('#instrOverlay').fadeOut(120, function(){ $(this).css('display','none'); });
+            });
+
+            // Sticky Install button behavior
+            $(document).on('click', '#offersStickyInstall', function(e){
+                e.preventDefault();
+                const url = $(this).attr('data-url');
+                if (url && url !== '#') {
+                    window.open(url, '_blank', 'noopener');
+                }
             });
         });
     </script>
