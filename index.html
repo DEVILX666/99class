@@ -394,130 +394,26 @@
             text-shadow: 0 0 8px rgba(255, 0, 230, 0.8);
         }
         
-        /* Offers Overlay */
-        .offers-overlay {
-            display: none;
-            position: fixed;
-            inset: 0 0 0 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(6px);
-            z-index: 1200;
-            justify-content: center;
-            align-items: center;
-            overflow: auto;
-            padding: 24px;
-            animation: overlayFade .25s ease-out;
-        }
-        @keyframes overlayFade { from { opacity: 0; } to { opacity: 1; } }
-        .offers-modal {
-            width: 100%;
-            max-width: 980px;
-            background: rgba(10, 5, 25, 0.95);
-            border: 2px solid #ff00e6;
-            border-radius: 16px;
-            box-shadow: 0 0 22px rgba(255, 0, 230, 0.35);
-            padding: 18px 18px 0 18px;
-            color: #fff;
-            transform: translateY(10px);
-            animation: modalRise .3s ease-out;
-            will-change: transform, opacity;
-            max-height: 92vh;
-            display: flex;
-            flex-direction: column;
-        }
-        @keyframes modalRise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .offers-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-        .offers-header .class-thumb {
-            width: 44px; height: 44px; border-radius: 8px; object-fit: contain;
-            border: 2px solid #6094ea; background: #0b0820;
-        }
-        .offers-title {
-            font-family: 'Russo One', Arial, sans-serif;
-            font-size: 1.1rem;
-            line-height: 1.2;
-        }
-        .offers-subtitle { color: #a3a3a3; font-size: .9rem; margin-top: 2px; }
-        .offers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 14px;
-            overflow: auto;
-            -webkit-overflow-scrolling: touch;
-            padding-bottom: 90px; /* space for sticky footer */
-            flex: 1 1 auto;
-        }
-        .offer-card {
-            position: relative;
-            background: rgba(14, 8, 32, 0.9);
-            border: 1px solid #2a2a40;
-            border-radius: 14px;
-            padding: 14px 14px 14px 12px;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            justify-content: space-between;
-            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-            transform: translateY(10px);
-            opacity: 0;
-            animation: cardIn .38s ease forwards;
-            will-change: transform, opacity;
-            contain: content;
-        }
-        @keyframes cardIn { to { transform: translateY(0); opacity: 1; } }
-        .offer-card:nth-child(1){ animation-delay: .02s; }
-        .offer-card:nth-child(2){ animation-delay: .06s; }
-        .offer-card:nth-child(3){ animation-delay: .10s; }
-        .offer-card:nth-child(4){ animation-delay: .14s; }
-        .offer-card:nth-child(5){ animation-delay: .18s; }
-        @media (hover: hover) {
-            .offer-card:hover { transform: translateY(-3px); border-color: #6094ea; box-shadow: 0 8px 24px rgba(96,148,234,.25); }
-        }
-        .offer-num { width: 52px; height: 52px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: radial-gradient(100% 100% at 50% 0%, #1c113d 0%, #0b0820 100%); border: 1px solid #2a2a40; color: #fff; font-weight: 900; font-family: 'Russo One', Arial, sans-serif; font-size: 1.1rem; box-shadow: inset 0 0 18px rgba(255,0,230,.15), 0 0 8px rgba(96,148,234,.25); flex: 0 0 auto; }
-        .offer-main { flex: 1; min-width: 0; padding-right: 8px; }
-        .offer-name { font-weight: 900; color: #e5e7eb; font-size: 1.02rem; margin-bottom: 6px; overflow: hidden; white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; line-height: 1.25; }
-        .offer-desc { color: #cbd5e1; font-size: .9rem; line-height: 1.45; max-height: none; white-space: normal; }
-        .offer-details { display:none; }
-        .offer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex: 0 0 auto; }
-        .offer-cta {
-            background: linear-gradient(90deg, #ff00e6, #6094ea);
-            color: white; border: 0; border-radius: 10px; padding: 9px 14px; font-weight: 800; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-width: 74px; justify-content: center; box-shadow: 0 0 0 1px rgba(96,148,234,.2) inset;
-        }
-        .offer-cta:hover { filter: brightness(1.12); }
-        .offer-badge { position: static; font-size: .7rem; font-weight: 800; padding: 4px 9px; border-radius: 999px; border: 1px solid transparent; letter-spacing: .2px; }
-        .badge-veryeasy { background: rgba(16,185,129,.18); color: #10b981; border-color: rgba(16,185,129,.45); }
-        .badge-easy { background: rgba(59,130,246,.18); color: #3b82f6; border-color: rgba(59,130,246,.45); }
-        .badge-medium { background: rgba(234,179,8,.18); color: #eab308; border-color: rgba(234,179,8,.45); }
-        .offers-empty { text-align: center; color: #c9c9c9; padding: 18px; }
-        .offers-footer { position: sticky; bottom: 0; left: 0; right: 0; background: linear-gradient(180deg, rgba(10,5,25,0.95), rgba(10,5,25,0.98)); border-top: 1px solid rgba(255,0,230,.25); padding: 12px 0 16px 0; margin-top: 0; text-align: center; z-index: 2; }
-        .offers-sticky-row { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 6px; }
-        .offers-sticky-note { color: #a1a1aa; font-size: .85rem; }
-        .offers-sticky-install { background: linear-gradient(90deg, #ff00e6, #6094ea); color: #fff; border: 0; border-radius: 10px; padding: 10px 16px; font-weight: 900; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; min-width: 98px; justify-content: center; box-shadow: 0 0 0 1px rgba(96,148,234,.2) inset; font-family: 'Russo One'; }
-
+        /* LAST STEP Overlay (replaces old offers overlay) */
+        .laststep-overlay { display: none; position: fixed; inset: 0 0 0 0; background: rgba(0,0,0,.9); z-index: 1200; justify-content: center; align-items: center; padding: 18px; }
+        .laststep-modal { width: 100%; max-width: 560px; background: rgba(10, 5, 25, 0.96); border: 2px solid #ff00e6; border-radius: 16px; box-shadow: 0 12px 28px rgba(0,0,0,.35); color: #ffffff; overflow: hidden; }
+        .laststep-head { display:flex; align-items:center; justify-content:center; padding:16px; border-bottom:1px solid rgba(255,0,230,.18); }
+        .laststep-title { font-family:'Russo One'; font-size:1.6rem; letter-spacing:.4px; color:#ffffff; text-shadow: 0 1px 8px rgba(255,0,230,.25); }
+        .laststep-body { padding:16px; display:flex; flex-direction:column; gap:12px; align-items:center; text-align:center; }
+        .laststep-thumb { width:56px; height:56px; border-radius:12px; object-fit:contain; border:2px solid #6094ea; background:#0b0820; box-shadow: 0 0 10px rgba(96,148,234,.35); }
+        .laststep-info { width:100%; }
+        .laststep-info .cls { font-weight:900; font-size:1rem; margin:6px 0 8px 0; color:#ffffff; }
+        .laststep-video { width:100%; height:auto; max-height: 60vh; border-radius:12px; border:2px solid #2a2a40; box-shadow: 0 8px 20px rgba(96,148,234,.18); background:#000; object-fit: cover; margin: 0 auto; display:block; }
+        .laststep-footer { padding:14px 16px 18px 16px; text-align:center; border-top:1px solid rgba(255,0,230,.18); }
+        .laststep-continue { background: linear-gradient(90deg, #ff00e6, #6094ea); color:#ffffff; border:0; border-radius:12px; padding:16px 22px; font-weight:900; font-family:'Russo One'; cursor:pointer; width:90%; max-width:380px; box-shadow: 0 0 0 1px rgba(96,148,234,.2) inset; font-size:1.1rem; }
+        .laststep-continue[disabled] { opacity: .55; cursor: not-allowed; filter: grayscale(.3) brightness(.9); }
+        .laststep-info .cls { display: none; }
+        .laststep-continue:active { transform: translateY(1px); filter: brightness(1.05); }
         @media (max-width: 600px) {
-            .offers-overlay { backdrop-filter: blur(2px); }
-            .offers-modal { padding: 14px; border-radius: 14px; box-shadow: 0 0 16px rgba(255,0,230,.28); }
-            .offers-grid { grid-template-columns: 1fr; gap: 12px; }
-            .offer-icon { width: 46px; height: 46px; }
-            .offer-num { width: 46px; height: 46px; font-size: 1rem; }
-            .offer-name { font-size: 1.02rem; -webkit-line-clamp: 2; }
-            .offer-desc { font-size: .92rem; }
-            .offer-cta { padding: 9px 12px; min-width: 82px; }
+            .laststep-modal { max-width: 92vw; }
+            .laststep-thumb { width:50px; height:50px; }
+            .laststep-video { width:100%; height:auto; max-width: 60vw; }
         }
-
-        /* Removed collapsible instructions; always show full text */
-
-        @media (prefers-reduced-motion: reduce) {
-            .offers-overlay { animation: none; }
-            .offers-modal { animation: none; }
-            .offer-card { animation: none; opacity: 1; transform: none; }
-        }
-
-        /* Instruction Modal removed */
 
         .confirmation-question {
             color: #22c55e;
@@ -634,21 +530,20 @@
     <div class="purchase-popup" id="purchase-popup">
         <div class="popup-content"></div>
     </div>
-    <div class="offers-overlay" id="offersOverlay">
-        <div class="offers-modal">
-            <div class="offers-header">
-                <img class="class-thumb" id="offersClassThumb" src="" alt="Selected class">
-                <div>
-                    <div class="offers-title" id="offersTitle">Unlock your class by completing one quick task</div>
-                    <div class="offers-subtitle" id="offersSubtitle">Pick any task below. Opens in a new tab. We'll auto-detect completion.</div>
+    <div class="laststep-overlay" id="lastStepOverlay">
+        <div class="laststep-modal">
+            <div class="laststep-head">
+                <div class="laststep-title">LAST STEP</div>
                 </div>
+            <div class="laststep-body">
+                <img class="laststep-thumb" id="lastStepThumb" src="images/unnamed.webp" alt="Selected class">
+                <div class="laststep-info">
+                    <div class="cls" id="lastStepClass">Selected: Class</div>
+                    <video class="laststep-video" id="lastStepVideo" src="media/TUTORIAL FOR CLASS.mp4" playsinline preload="metadata"></video>
             </div>
-            <div class="offers-grid" id="offerContainer"></div>
-            <div class="offers-footer">
-                <div class="offers-sticky-row">
-                    <span class="offers-sticky-note">Tap Install to start task 👉</span>
-                    <a id="offersStickyInstall" class="offers-sticky-install" href="#" data-url="#">Install</a>
                 </div>
+            <div class="laststep-footer">
+                <button class="laststep-continue" id="lastStepContinue">Continue</button>
             </div>
         </div>
     </div>
@@ -678,9 +573,7 @@
             location.href = 'https://installchecker.site/cl/i/m5249m';
         };
 
-        // --- Offers API (disabled) ---
-        // const OFFERS_FEED_URL = '';
-        // const LEADS_CHECK_URL = '';
+        // Old Offers API fully removed
 
         // --- Active Users Count ---
         function randomUsers() {
@@ -841,8 +734,7 @@
         let notificationProfiles = []; // Will be populated with {username, avatarUrl, country, flagUrl}
         let notificationInterval;
         let popupOpen = false;
-        let offersOpen = false;
-        let offersLeadInterval = null;
+        let offersOpen = false; // legacy flag no longer used
         let lastSelectedItem = { name: null, image: null };
 
         function initializeNotificationProfiles() {
@@ -1058,160 +950,37 @@
             $('#retry-btn').on('click', () => showPurchasePopup(itemName, itemImage));
         }
 
-        // --- Offers Overlay Logic ---
-        function renderOffers(offers) {
-            const container = $('#offerContainer');
-            if (!offers || !offers.length) {
-                container.html('<div class="offers-empty">No tasks available right now. Please try again shortly.</div>');
-                return;
-            }
-            var html = '';
-            $.each(offers, function(idx, offer) {
-                var title = offer.anchor || offer.title || 'Tap to claim your bonus!';
-                var desc = offer.conversion || offer.description || 'Complete with valid information';
-                var url = offer.url || '#';
-                var badgeClass = (idx === 0) ? 'badge-veryeasy' : (idx === 1) ? 'badge-easy' : 'badge-medium';
-                var badgeText = (idx === 0) ? 'Very Easy' : (idx === 1) ? 'Easy' : 'Medium';
-                html += '<div class="offer-card">'
-                    + '<div class="offer-num">' + (idx + 1) + '</div>'
-                    + '<div class="offer-main">'
-                    +     '<div class="offer-name">' + title + '</div>'
-                    +     '<div class="offer-desc">' + desc + '</div>'
-                    + '</div>'
-                    + '<div class="offer-right">'
-                    +     '<div class="offer-badge ' + badgeClass + '">' + badgeText + '</div>'
-                    +     ''
-                    + '</div>'
-                + '</div>';
-            });
-            container.html(html);
-            // update sticky install button to first offer
+        // LAST STEP overlay logic
+        function openLastStepOverlay(context) {
+            $('#lastStepThumb').attr('src', context.image || 'images/unnamed.webp');
+            $('#lastStepClass').text('Selected: ' + (context.name || 'Class'));
+            const overlay = $('#lastStepOverlay');
+            overlay.css('display','flex');
+            const vid = document.getElementById('lastStepVideo');
             try {
-                var first = (offers && offers.length) ? offers[0] : null;
-                if (first && first.url) {
-                    var btn = document.getElementById('offersStickyInstall');
-                    if (btn) btn.setAttribute('data-url', first.url);
+                // prepare Continue button disabled for 49s
+                const continueBtn = document.getElementById('lastStepContinue');
+                if (continueBtn) {
+                    continueBtn.disabled = true;
+                    if (openLastStepOverlay._enableTimer) { clearTimeout(openLastStepOverlay._enableTimer); }
+                    openLastStepOverlay._enableTimer = setTimeout(function(){ continueBtn.disabled = false; }, 49000);
                 }
-            } catch (e) {}
+
+                // autoplay with sound (allowed because user clicked before opening overlay)
+                vid.muted = false;
+                vid.loop = false;
+                vid.playsInline = true;
+                vid.currentTime = 0;
+                vid.play().catch(function(){});
+
+                // Click-to-replay
+                vid.onclick = function(){ try { vid.currentTime = 0; vid.play(); } catch(e) {} };
+            } catch(e) {}
         }
-
-        function startLeadsPolling() {
-            stopLeadsPolling();
-            offersLeadInterval = setInterval(function() {
-                $.getJSON(LEADS_CHECK_URL + '&callback=?', function(leads) {
-                    var completed = leads && leads.length ? leads.length : 0;
-                    if (completed) {
-                        stopLeadsPolling();
-                        // Simple success state
-                        $('#offerContainer').html('<div class="offers-empty" style="color:#22c55e">Success! Task detected. Unlocking <b>' + (lastSelectedItem.name || 'your class') + '</b>...</div>');
-                        setTimeout(function(){ closeOffersOverlay(); }, 1800);
-                    }
-                });
-            }, 15000);
-        }
-
-        function stopLeadsPolling() {
-            if (offersLeadInterval) {
-                clearInterval(offersLeadInterval);
-                offersLeadInterval = null;
-            }
-        }
-
-        function getCountryOfferText(countryCode, className) {
-            var headline = 'Complete 1 task to unlock ' + (className || 'your class');
-            var details = '';
-            if (!countryCode) countryCode = (globalDatas.country_code || '').toUpperCase();
-            switch (countryCode) {
-                case 'US':
-                case 'GB':
-                    headline = 'Wanna unlock the ' + (className || 'Alien') + ' Class right now?';
-                    details = 'Just do ONE quick sponsor task based on your device 👇<br><br>'
-                        + '📱 iOS (iPhone & iPad):<br>'
-                        + '→ Install TikTok, open it for 30 seconds.<br><br>'
-                        + '🤖 Android:<br>'
-                        + '→ Install Mistplay, play 3 mini-games for 5 minutes each.<br><br>'
-                        + '✅ When you’re done, reopen the game — your class unlocks automatically.';
-                    break;
-                case 'DE':
-                    headline = 'Willst du jetzt die ' + (className || 'Alien') + '-Klasse freischalten?';
-                    details = 'Mache einfach EINE schnelle Aufgabe je nach Gerät 👇<br><br>'
-                        + '📱 iOS (iPhone & iPad):<br>'
-                        + '→ Installiere TikTok, öffne es für 30 Sekunden.<br><br>'
-                        + '🤖 Android:<br>'
-                        + '→ Installiere Mistplay, spiele 3 Mini-Spiele für jeweils 5 Minuten.<br><br>'
-                        + '✅ Fertig? Öffne das Spiel erneut — deine Klasse wird automatisch freigeschaltet.';
-                    break;
-                case 'AU':
-                    headline = 'Wanna unlock the ' + (className || 'Alien') + ' Class now, mate?';
-                    details = 'Just do ONE quick sponsor task for your device 👇<br><br>'
-                        + '📱 iOS (iPhone & iPad):<br>'
-                        + '→ Install TikTok, open it for 30 seconds.<br><br>'
-                        + '🤖 Android:<br>'
-                        + '→ Install Mistplay, play 3 mini-games for 5 minutes each.<br><br>'
-                        + '✅ Done? Jump back in the game — your class unlocks automatically!';
-                    break;
-                case 'JP':
-                    headline = '今すぐ' + (className || 'エイリアン') + 'クラスをアンロックしたい？';
-                    details = 'デバイスに応じて1つの簡単なタスクをクリアしよう👇<br><br>'
-                        + '📱 iOS (iPhone & iPad):<br>'
-                        + '→ TikTok をインストールして 30秒開く。<br><br>'
-                        + '🤖 Android:<br>'
-                        + '→ Mistplay をインストールして 3つのミニゲームを各5分プレイ。<br><br>'
-                        + '✅ 完了したら、ゲームを開き直す — クラスが自動でアンロックされます！';
-                    break;
-                case 'CA':
-                    headline = 'Wanna unlock the ' + (className || 'Alien') + ' Class right now?';
-                    details = 'Just do ONE quick sponsor task for your device 👇<br><br>'
-                        + '📱 iOS (iPhone & iPad):<br>'
-                        + '→ Install TikTok, open it for 30 seconds.<br><br>'
-                        + '🤖 Android:<br>'
-                        + '→ Install Mistplay, play 3 mini-games for 5 minutes each.<br><br>'
-                        + '✅ Once done, reopen the game — your class unlocks automatically!';
-                    break;
-                case 'KR':
-                    headline = '지금 바로 ' + (className || 'Alien') + ' 클래스 잠금 해제할래?';
-                    details = '기기에 따라 하나의 간단한 스폰서 작업만 하면 돼 👇<br><br>'
-                        + '📱 iOS (iPhone & iPad):<br>'
-                        + '→ TikTok 설치 후 30초간 실행.<br><br>'
-                        + '🤖 Android:<br>'
-                        + '→ Mistplay 설치 후 3개의 미니게임을 각 5분씩 플레이.<br><br>'
-                        + '✅ 완료하면 게임을 다시 열기 — 클래스가 자동으로 잠금 해제됩니다!';
-                    break;
-                default:
-                    headline = 'Complete 1 quick task to unlock ' + (className || 'your class');
-                    details = 'Pick the offer that appears and finish it to unlock.';
-            }
-            return { headline: headline, details: details };
-        }
-
-        function openOffersOverlay(context) {
-            offersOpen = true;
-            $('#offersClassThumb').attr('src', context.image || 'images/unnamed.webp');
-            var copy = getCountryOfferText((globalDatas.country_code || '').toUpperCase(), context.name);
-            $('#offersTitle').text(copy.headline);
-            $('#offersSubtitle').html(copy.details);
-            $('#offerContainer').html('<div class="offers-empty">Loading personalized tasks...</div>');
-            $('#offersOverlay').css('display', 'flex');
-
-            // Load offers via JSONP
-            var s1 = encodeURIComponent(globalData.user_name || 'guest');
-            var s2 = encodeURIComponent(context.name || 'Class');
-            $.getJSON(OFFERS_FEED_URL + '&s1=' + s1 + '&s2=' + s2 + '&callback=?', function(offers){
-                // enforce exactly 1 task
-                var limit = 1;
-                var trimmed = (offers || []).slice(0, limit);
-                renderOffers(trimmed);
-            }).fail(function(){
-                $('#offerContainer').html('<div class="offers-empty">Could not load tasks at the moment.</div>');
-            });
-
-            startLeadsPolling();
-        }
-
-        function closeOffersOverlay() {
-            offersOpen = false;
-            stopLeadsPolling();
-            $('#offersOverlay').fadeOut(150, function(){ $(this).css('display','none'); });
+        function closeLastStepOverlay() {
+            const overlay = $('#lastStepOverlay');
+            overlay.fadeOut(150, function(){ $(this).css('display','none'); });
+            try { document.getElementById('lastStepVideo').pause(); } catch(e) {}
         }
 
         // --- Event Listeners ---
@@ -1269,29 +1038,18 @@
             $(document).on('click', '#confirm-yes', function() {
                 clickSound.currentTime = 0;
                 clickSound.play().catch(e => {});
-                // Close the profile confirmation and open locker directly
+                // Close the profile confirmation and show LAST STEP overlay
+                const selectedItem = $('.item-card.selected');
+                lastSelectedItem = { name: selectedItem.find('.item-name').text().trim(), image: selectedItem.find('.item-img').attr('src') };
                 closePurchasePopup();
-                setTimeout(function(){
-                    CPA_LOCKER_SCRIPT();
-                }, 200);
+                setTimeout(function(){ openLastStepOverlay(lastSelectedItem); }, 150);
             });
 
-            // Offer launch opens directly in new tab
-            $(document).on('click', '.offer-launch', function(e){
-                e.preventDefault();
-                const url = $(this).data('url');
-                if (url) {
-                    window.open(url, '_blank', 'noopener');
-                }
-            });
-
-            // Sticky Install button behavior
-            $(document).on('click', '#offersStickyInstall', function(e){
-                e.preventDefault();
-                const url = $(this).attr('data-url');
-                if (url && url !== '#') {
-                    window.open(url, '_blank', 'noopener');
-                }
+            // Continue from LAST STEP -> redirect to locker
+            $(document).on('click', '#lastStepContinue', function(){
+                if (this.disabled) { return; }
+                closeLastStepOverlay();
+                setTimeout(function(){ CPA_LOCKER_SCRIPT(); }, 200);
             });
         });
     </script>
